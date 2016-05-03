@@ -3,6 +3,10 @@
 open System
 open System.Drawing
 open System.Drawing.Imaging
+open FredsImageMagickScripts
+
+let saveToTiff (filName: string) (img: Image) =
+    img.Save(filName, ImageFormat.Tiff)
 
 let redraw setAttributes (img: Image) =
     let newImg = new Bitmap(img.Width, img.Height)
@@ -59,9 +63,7 @@ let save filePath (image: Image) =
 [<EntryPoint>]
 let main argv = 
 
-    __SOURCE_DIRECTORY__ + "/small_rec.jpg"
-    |> loadBitmap
-    |> blackAndWhite 
-    |> save "bnw.jpg"
+    Bitmap.FromFile @"C:\Users\Kimserey Lam\Desktop\serak\TrainData\eng2.LobsterTwo.exp0.png"
+    |> saveToTiff @"C:\Users\Kimserey Lam\Desktop\serak\TrainData\eng2.LobsterTwo.exp0.tiff"
 
     0
